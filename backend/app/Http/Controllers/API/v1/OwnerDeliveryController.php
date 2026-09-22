@@ -23,7 +23,7 @@ class OwnerDeliveryController extends Controller
         // Pickup orders are always managed here; delivery orders only when delivery is enabled
         $methods = $mall->delivery_enabled ? ['delivery', 'pickup'] : ['pickup'];
 
-        $query = Order::with('items.product', 'user:id,name,phone', 'mall:id,name_ar,name_en')
+        $query = Order::with('items.product', 'user:id,name,phone', 'mall:id,name_ar,name_en', 'deliveryZone')
             ->where('mall_id', $mall->id)
             ->whereIn('delivery_method', $methods);
 

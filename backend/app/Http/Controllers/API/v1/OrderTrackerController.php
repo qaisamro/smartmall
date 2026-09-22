@@ -12,7 +12,7 @@ class OrderTrackerController extends Controller
 {
     public function index(Request $request)
     {
-        $query = Order::with(['mall', 'mall.owner', 'items.product', 'user', 'deliveryPerson']);
+        $query = Order::with(['mall', 'mall.owner', 'items.product', 'user', 'deliveryPerson', 'deliveryZone']);
 
         // Daily archiving: 'today' (default) shows only current-day orders,
         // 'archive' shows everything before today, 'all' shows everything.
@@ -80,7 +80,7 @@ class OrderTrackerController extends Controller
 
     public function search(Request $request)
     {
-        $query = Order::with(['mall:id,name_ar,name_en,type,contact_phone,owner_id', 'mall.owner:id,name,phone,whatsapp', 'items.product', 'user:id,name,phone,whatsapp', 'deliveryPerson:id,name,phone,whatsapp']);
+        $query = Order::with(['mall:id,name_ar,name_en,type,contact_phone,owner_id', 'mall.owner:id,name,phone,whatsapp', 'items.product', 'user:id,name,phone,whatsapp', 'deliveryPerson:id,name,phone,whatsapp', 'deliveryZone']);
 
         if ($request->filled('order_id')) {
             $searchTerm = $request->order_id;

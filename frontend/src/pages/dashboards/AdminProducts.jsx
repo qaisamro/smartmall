@@ -371,7 +371,7 @@ const AdminProducts = () => {
                     <div className="fixed inset-0 z-[110] flex items-start justify-center p-4 bg-black/80 backdrop-blur-sm overflow-y-auto"
                         onClick={closeModal}>
                         <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }}
-                            className="w-full max-w-xl glass-dark p-6 sm:p-8 rounded-[2rem] border border-white/10 relative my-auto"
+                            className="w-full max-w-xl glass-dark form-dark-card p-6 sm:p-8 rounded-[2rem] border border-white/10 relative my-auto"
                             onClick={e => e.stopPropagation()}>
                             <button onClick={closeModal} className="absolute top-6 left-6 p-2 rounded-full hover:bg-white/10 transition-colors">
                                 <X className="w-5 h-5 text-gray-400" />

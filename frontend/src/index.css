@@ -666,3 +666,9 @@ textarea {
     box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2) !important;
   }
 }
+
+/* Site popup & form cards: always solid black so text stays readable (overrides mobile white-glass rule) */
+.glass-dark.site-popup-card,
+.glass-dark.form-dark-card {
+  background: #000 !important;
+}

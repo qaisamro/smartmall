@@ -1,0 +1,1 @@
+function e(e,{width:t=300,height:n=300}={}){return!e||typeof e!=`string`||!e.includes(`res.cloudinary.com`)||e.includes(`/w_`)||e.includes(`,f_auto`)?e:e.replace(`/upload/`,`/upload/w_${t},h_${n},c_fill,f_auto,q_auto/`)}export{e as t};

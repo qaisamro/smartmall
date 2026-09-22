@@ -1,4 +1,31 @@
 /**
+ * Whether a notification URL points outside the app (e.g. Facebook/WhatsApp links
+ * sent via admin broadcast) and must be opened externally.
+ *
+ * @param {string} url
+ * @returns {boolean}
+ */
+export function isExternalUrl(url) {
+    return typeof url === 'string' && /^https?:/i.test(url.trim());
+}
+
+/**
+ * Open a notification URL: external links in a new tab, internal routes via router.
+ * Also repairs the common "https:/example.com" (single slash) typo.
+ *
+ * @param {string} url
+ * @param {function} navigate - react-router navigate for internal routes
+ */
+export function openNotificationUrl(url, navigate) {
+    const target = url || '/notifications';
+    if (isExternalUrl(target)) {
+        const fixed = target.trim().replace(/^(https?:\/)(?!\/)/i, '$1/');
+        window.open(fixed, '_blank', 'noopener,noreferrer');
+        return;
+    }
+    navigate(target);
+}
+/**
  * Returns the correct navigation URL for a given notification data object.
  * Checks action_url first, then falls back to type-based routing.
  *

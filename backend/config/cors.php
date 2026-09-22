@@ -24,6 +24,7 @@ return [
         'https://localhost:5173',
         'http://127.0.0.1:8000',
         'https://samrtmall.cloud',
+        'https://33e5f46d-1dd4-482e-97bc-f555dbd3712a-00-dsea6oq75f32.expo.pike.replit.dev',
         env('FRONTEND_URL'),
     ],
 

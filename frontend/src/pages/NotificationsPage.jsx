@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import { Bell, CheckCheck, ShoppingBag, Truck, Star, Package, Megaphone, MessageSquare, ArrowLeft, Clock, Store, DollarSign, User } from 'lucide-react';
-import { getNotificationUrl } from '../utils/notifications';
+import { getNotificationUrl, openNotificationUrl } from '../utils/notifications';
 import { clearAppBadge } from '../utils/pwa';
 
 const typeIcons = {
@@ -64,8 +64,7 @@ const NotificationsPage = () => {
             markAsReadMutation.mutate(n.id);
         }
         const data = typeof n.data === 'string' ? JSON.parse(n.data) : n.data;
-        const url = getNotificationUrl(data);
-        navigate(url);
+        openNotificationUrl(getNotificationUrl(data), navigate);
     };
 
     const notifList = Array.isArray(notifications) ? notifications : [];

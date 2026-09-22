@@ -257,6 +257,13 @@ const OwnerDelivery = () => {
                                                 <span className="break-words">{order.delivery_address}</span>
                                             </div>
                                         )}
+                                        {order.deliveryZone && (
+                                            <div className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm sm:col-span-2 min-w-0">
+                                                <MapPin className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-400 shrink-0" />
+                                                <span className="text-gray-300 font-bold">منطقة التوصيل: {order.deliveryZone.name}</span>
+                                                {order.delivery_fee > 0 && <span className="text-amber-400 font-mono">({order.delivery_fee} ₪)</span>}
+                                            </div>
+                                        )}
                                         {order.general_notes && (
                                             <div className="flex items-start gap-1.5 sm:gap-2 text-xs sm:text-sm text-amber-400 bg-amber-500/5 border border-amber-500/15 rounded-xl px-2.5 py-1.5 sm:col-span-2 min-w-0">
                                                 <AlertTriangle className="w-3.5 h-3.5 sm:w-4 sm:h-4 shrink-0 mt-0.5" />

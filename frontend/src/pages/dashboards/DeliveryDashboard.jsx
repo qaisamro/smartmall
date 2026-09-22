@@ -218,9 +218,9 @@ const DeliveryDashboard = () => {
                         <MapPin className="w-4 h-4 text-gray-400 mt-0.5 shrink-0" />
                     </div>
                 )}
-                {order.delivery_zone && (
+                {order.deliveryZone && (
                     <div className="flex items-center justify-start gap-2 text-sm">
-                        <span className="text-gray-300">{order.delivery_zone.name}</span>
+                        <span className="text-gray-300">{order.deliveryZone.name}</span>
                         <MapPin className="w-4 h-4 text-amber-400 shrink-0" />
                     </div>
                 )}

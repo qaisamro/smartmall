@@ -14,6 +14,13 @@ import api from '../api/axios';
 const isKiloUnit = (u) => u ? /كيلو|كليو|كجم|كغ|\bkg\b|kilo/i.test(String(u)) : false;
 const qtyStep = (u) => isKiloUnit(u) ? 0.1 : 1;
 const roundQty = (v) => Math.round(v * 10) / 10;
+const isValidAddress = (v) => {
+    const t = (v || '').trim();
+    if (t.length < 3) return false;
+    if (!/[\u0600-\u06FF]/.test(t)) return false;
+    if (t.split(/\s+/).filter(Boolean).length < 2) return false;
+    return true;
+};
 const stockCap = (item) => {
     const cap = Number(item?.stock_quantity);
     return Number.isFinite(cap) && cap > 0 ? cap : null;
@@ -127,8 +134,8 @@ const Cart = () => {
         const isRemote = deliveryMethod === 'delivery' || deliveryMethod === 'pickup';
         try {
             setSubmitting(true);
-            if (deliveryMethod === 'delivery' && (!selectedZone || !address)) {
-                alert("يرجى اختيار منطقة التوصيل وإدخال العنوان بالتفصيل");
+            if (deliveryMethod === 'delivery' && (!selectedZone || !isValidAddress(address))) {
+                alert("يرجى اختيار منطقة التوصيل وكتابة العنوان بالعربية من كلمتين على الأقل (مثال: دورا، شارع القدس)");
                 return;
             }
             if (isRemote && !phone.trim()) {

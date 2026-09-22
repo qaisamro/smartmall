@@ -22,7 +22,7 @@ class ProductImportController extends Controller
 
     private function ownerCanAccessMall(Request $request, int $mallId): bool
     {
-        if (! $request->user()->hasRole('mall-owner')) {
+        if (! $request->user()->hasAnyRole(['mall-owner', 'supermarket-owner'])) {
             return true;
         }
 
@@ -177,7 +177,7 @@ class ProductImportController extends Controller
     {
         $query = ProductImport::with(['mall', 'user'])->orderByDesc('created_at');
 
-        if ($request->user()->hasRole('mall-owner')) {
+        if ($request->user()->hasAnyRole(['mall-owner', 'supermarket-owner'])) {
             $mallIds = $this->ownedMallIds($request);
 
             if ($request->filled('mall_id') && ! $mallIds->contains((int) $request->mall_id)) {

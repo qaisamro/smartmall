@@ -73,7 +73,7 @@ const AutoClosePopup = ({ popup, zIndex, dismiss, autoClose }) => {
                         initial={{ opacity: 0, scale: 0.9, y: 20 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.9, y: 20 }}
-                        className="relative max-w-lg w-full glass-dark rounded-[2rem] border border-white/10 overflow-hidden"
+                        className="site-popup-card relative max-w-lg w-full glass-dark rounded-[2rem] border border-white/10 overflow-hidden"
                     >
                         <button onClick={() => dismiss(popup.id)}
                             className="absolute top-4 left-4 z-10 p-2 rounded-full bg-black/40 hover:bg-black/60 text-white transition-all">

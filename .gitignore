@@ -52,3 +52,9 @@ output/
 Amazon-Image-Scrapper/downloaded_images/
 I'
 IIBBBBB'
+
+# Server-sync artifacts (legacy backup files pulled from production, redundant)
+*.bak-*
+*.bak
+*.bkp
+backend/public/storage.bak-*/

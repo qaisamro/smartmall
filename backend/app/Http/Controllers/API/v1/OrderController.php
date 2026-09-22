@@ -148,9 +148,16 @@ class OrderController extends Controller
     {
         $request->validate([
             'delivery_method' => 'required|in:in-mall,pickup,delivery,direct_purchase',
-            'delivery_zone_id' => 'nullable|exists:delivery_zones,id',
+            'delivery_zone_id' => 'required_if:delivery_method,delivery|nullable|exists:delivery_zones,id',
             'delivery_fee' => 'nullable|numeric|min:0',
-            'delivery_address' => 'nullable|string|max:500',
+            'delivery_address' => ['required_if:delivery_method,delivery', 'nullable', 'string', 'min:3', 'max:500',
+                function ($attribute, $value, $fail) use ($request) {
+                    if ($request->delivery_method !== 'delivery' || $value === null) return;
+                    $words = preg_split('/\s+/u', trim($value));
+                    if (!preg_match('/[\x{0600}-\x{06FF}]/u', $value) || count($words) < 2) {
+                        $fail('العنوان يجب أن يكون بالعربية من كلمتين على الأقل.');
+                    }
+                }],
             'delivery_phone' => 'nullable|string|max:20',
             'general_notes' => 'nullable|string|max:1000',
         ]);
@@ -166,9 +173,6 @@ class OrderController extends Controller
         }
 
         $mall = \App\Models\Mall::findOrFail($pending->mall_id);
-        $isInMall = $request->delivery_method === 'in-mall';
-        $isPickup = $request->delivery_method === 'pickup';
-        $isDelivery = $request->delivery_method === 'delivery';
 
         // إنشاء الطلب الفعلي
         $order = \App\Models\Order::create([
@@ -178,7 +182,8 @@ class OrderController extends Controller
             'status' => 'pending',
             'total_amount' => $pending->total + ($request->delivery_fee ?? 0),
             'delivery_method' => $request->delivery_method,
-            'delivery_status' => $isInMall ? 'pending' : ($isPickup ? 'pending' : 'preparing'),
+            // يبدأ دائماً بانتظار اعتماد المالك (مدة التجهيز + الموافقة) قبل ظهور "بانتظار مندوب"
+            'delivery_status' => 'pending',
             'delivery_zone_id' => $request->delivery_zone_id,
             'delivery_fee' => $request->delivery_fee ?? 0,
             'delivery_address' => $request->delivery_address,

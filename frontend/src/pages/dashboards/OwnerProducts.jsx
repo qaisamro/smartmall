@@ -350,18 +350,18 @@ const OwnerProducts = () => {
                         />
                         <ScanBarcode className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-500" />
                     </div>
-                    <div className="flex items-center gap-3 w-full sm:w-auto">
-                        <button onClick={openCreate} className="btn-primary flex-1 sm:flex-none !py-3 flex items-center gap-2 justify-center">
+                    <div className="grid grid-cols-2 sm:flex sm:items-center gap-3 w-full sm:w-auto">
+                        <button onClick={openCreate} className="btn-primary flex-1 sm:flex-none !py-3 flex items-center gap-2 justify-center col-span-2 sm:col-span-1">
                             <Plus className="w-4 h-4" /> إضافة منتج
                         </button>
-                        <Link to="/owner/excel-upload" className="btn-secondary !py-3 flex items-center gap-2">
+                        <Link to="/owner/excel-upload" className="btn-secondary !py-3 flex items-center gap-2 justify-center">
                             <FileSpreadsheet className="w-4 h-4" /> رفع منتجات Excel
                         </Link>
-                        <Link to="/owner/sections" className="btn-secondary !py-3 flex items-center gap-2">
+                        <Link to="/owner/sections" className="btn-secondary !py-3 flex items-center gap-2 justify-center">
                             <FolderTree className="w-4 h-4" /> إدارة الأقسام
                         </Link>
                         {products.length > 0 && (
-                            <button onClick={() => setShowDeleteAllConfirm(true)} className="btn-danger !py-3 flex items-center gap-2">
+                            <button onClick={() => setShowDeleteAllConfirm(true)} className="btn-danger !py-3 flex items-center gap-2 justify-center col-span-2 sm:col-span-1">
                                 <Trash2 className="w-4 h-4" /> حذف الكل
                             </button>
                         )}
@@ -804,7 +804,7 @@ const OwnerProducts = () => {
             <AnimatePresence>
                 {showModal && (
                     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/80 backdrop-blur-sm">
-                        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="w-full max-w-lg glass-dark p-6 sm:p-8 rounded-[2rem] border border-white/10 relative max-h-[90vh] overflow-y-auto">
+                        <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} exit={{ opacity: 0, scale: 0.95 }} className="w-full max-w-lg glass-dark form-dark-card p-6 sm:p-8 rounded-[2rem] border border-white/10 relative max-h-[90vh] overflow-y-auto">
                             <button onClick={closeModal} className="absolute top-6 left-6 p-2 rounded-full hover:bg-white/10 transition-colors"><X className="w-5 h-5 text-gray-400" /></button>
                             <h3 className="text-2xl font-bold text-right mb-6">{editProduct ? 'تعديل المنتج' : 'إضافة منتج جديد'}</h3>
 

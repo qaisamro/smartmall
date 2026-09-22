@@ -833,6 +833,12 @@ const TrackerDashboard = () => {
                                                 <p className="text-xs text-gray-500 font-bold">طريقة الطلب</p>
                                                 <p className="text-white font-bold">{o.delivery_method === 'delivery' ? 'توصيل منزلي' : 'داخل المول'}</p>
                                                 <p className="text-xs text-gray-400">الحالة: {o.delivery_status || o.status}</p>
+                                                {o.deliveryZone && (
+                                                    <p className="text-xs text-amber-400 font-bold flex items-center gap-1">
+                                                        <MapPin className="w-3 h-3" />
+                                                        منطقة التوصيل: {o.deliveryZone.name}
+                                                    </p>
+                                                )}
                                             </div>
                                             <div className="p-4 rounded-2xl bg-white/5 space-y-2">
                                                 <p className="text-xs text-gray-500 font-bold">الزبون</p>

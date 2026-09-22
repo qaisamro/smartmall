@@ -4,7 +4,7 @@ import { useQuery, useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import api from '../api/axios';
 import { Bell, X, CheckCheck, Loader2, ShoppingBag, Truck, Star, Package, Megaphone, MessageSquare, ExternalLink } from 'lucide-react';
-import { getNotificationUrl } from '../utils/notifications';
+import { getNotificationUrl, openNotificationUrl } from '../utils/notifications';
 import NotificationSoundControl from './NotificationSoundControl';
 
 const typeIcons = {
@@ -67,8 +67,7 @@ const NotificationsDropdown = () => {
             markAsReadMutation.mutate(n.id);
         }
         const data = typeof n.data === 'string' ? JSON.parse(n.data) : n.data;
-        const url = getNotificationUrl(data);
-        navigate(url);
+        openNotificationUrl(getNotificationUrl(data), navigate);
         setOpen(false);
     };
 

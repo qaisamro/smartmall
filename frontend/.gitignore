@@ -12,6 +12,10 @@ dist
 dist-ssr
 *.local
 
+# Deployed production build is the source of truth and must stay tracked
+!dist/
+!dist/**
+
 # Editor directories and files
 .vscode/*
 !.vscode/extensions.json
