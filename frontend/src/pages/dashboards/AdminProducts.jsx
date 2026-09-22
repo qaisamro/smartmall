@@ -95,7 +95,7 @@ const AdminProducts = () => {
             const params = {};
             if (selectedMallId) params.mall_id = selectedMallId;
             if (debouncedSearch) params.search = debouncedSearch;
-            const res = await api.get('/admin/products/export', { params, responseType: 'blob' });
+            const res = await api.get('/admin/products/export', { params, responseType: 'blob', timeout: 120000 });
             // اسم الملف من السيرفر: المول_التاريخ_الوقت.xlsx — يظهر بالعربية كما هو
             let filename = 'products-export.xlsx';
             const disposition = res.headers?.['content-disposition'] || res.headers?.['Content-Disposition'];
@@ -116,6 +116,7 @@ const AdminProducts = () => {
             window.URL.revokeObjectURL(url);
         } catch (e) {
             console.error('Export failed', e);
+            alert('حدث خطأ أثناء التصدير (قد يكون الملف كبيراً ويحتاج وقتاً أطول). يرجى المحاولة مرة أخرى أو مراجعة إدارة الخادم.');
         }
     };
 
