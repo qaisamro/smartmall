@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>سلة التسوق - SmartMall</title>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Cairo -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#1d3557',
+              darkNavy: '#112233',
+              accentRed: '#e63946',
+              softGray: '#f8fafc',
+              borderGray: '#e2e8f0',
+              textPrimary: '#0f172a',
+              textSecondary: '#64748b',
+              shekel: '#0f172a'
+            }
+          },
+          fontFamily: {
+            sans: ['Cairo', 'sans-serif'],
+          },
+          boxShadow: {
+            'card': '0 4px 20px -2px rgba(0, 0, 0, 0.05)',
+            'floating': '0 8px 25px -4px rgba(29, 53, 87, 0.35)',
+            'nav': '0 -4px 20px 0 rgba(0, 0, 0, 0.04)',
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-ui-rules">
+    /* Remove default tap highlights on mobile */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: #f1f5f9;
+    }
+    /* Hide scrollbars for slick app look */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+</head>
+<body class="flex justify-center items-center min-h-screen p-0 sm:p-4 text-brand-textPrimary bg-slate-100">
+<!-- BEGIN: MobileContainer -->
+<!-- Device Frame & Screen Shell -->
+<div class="relative w-full max-w-[400px] h-[844px] bg-[#f8fafc] overflow-hidden flex flex-col justify-between sm:rounded-[44px] sm:shadow-2xl sm:border-[8px] sm:border-slate-800" data-purpose="mobile-viewport">
+<!-- Top Notch Area (Dynamic Island Mock) -->
+<div class="absolute top-2 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-50 pointer-events-none hidden sm:block"></div>
+<div class="flex-1 flex flex-col overflow-hidden">
+<!-- BEGIN: StatusBar -->
+<div class="w-full pt-3 px-7 flex justify-between items-center text-xs font-semibold tracking-tight text-slate-800 select-none z-30" data-purpose="ios-status-bar">
+<span>9:41</span>
+<div class="flex items-center space-x-1.5 space-x-reverse">
+<!-- Cellular Signal -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 3c-4.97 0-9 4.03-9 9 0 2.12.74 4.07 1.97 5.61L12 22l7.03-4.39C20.26 16.07 21 14.12 21 12c0-4.97-4.03-9-9-9zm0 2c3.87 0 7 3.13 7 7 0 1.54-.5 2.97-1.35 4.14L12 19.55l-5.65-3.41C5.5 14.97 5 13.54 5 12c0-3.87 3.13-7 7-7z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-4 h-4 fill-current" viewbox="0 0 24 24">
+<path d="M12 4C7.31 4 3.07 5.9 0 8.98L12 21 24 8.98C20.93 5.9 16.69 4 12 4zm0 3.3c3.78 0 7.21 1.48 9.77 3.93L12 18.96 2.23 11.23C4.79 8.78 8.22 7.3 12 7.3z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-slate-700 rounded-sm p-0.5 flex items-center">
+<div class="w-3 h-full bg-slate-800 rounded-[1px]"></div>
+</div>
+</div>
+</div>
+<!-- END: StatusBar -->
+<!-- BEGIN: HeaderSection -->
+<header class="px-5 pt-3 pb-4 flex items-center justify-between z-20" data-purpose="app-header">
+<!-- Back Button (Right in RTL) -->
+<button aria-label="الرجوع" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 shadow-sm border border-slate-100 active:scale-95 transition-transform" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Screen Title -->
+<h1 class="text-lg font-bold text-slate-800">سلة التسوق</h1>
+<!-- Cart Icon with Badge -->
+<div class="relative">
+<button aria-label="السلة" class="w-10 h-10 rounded-full bg-white flex items-center justify-center text-slate-700 shadow-sm border border-slate-100" type="button">
+<svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+<!-- Counter Badge -->
+<span class="absolute -top-1 -right-1 bg-red-500 text-white font-bold text-[11px] w-5 h-5 flex items-center justify-center rounded-full border-2 border-white shadow-sm">
+            1
+          </span>
+</div>
+</header>
+<!-- END: HeaderSection -->
+<!-- Scrollable Main Content Area -->
+<main class="flex-1 overflow-y-auto px-5 pb-6 space-y-4" data-purpose="cart-content">
+<!-- BEGIN: CartItemCard -->
+<div class="bg-white rounded-2xl p-4 shadow-card border border-slate-100 flex items-center gap-3.5 relative transition-all" data-purpose="cart-item">
+<!-- Product Image Box -->
+<div class="w-20 h-20 rounded-xl bg-slate-50 border border-slate-100 overflow-hidden flex-shrink-0 flex items-center justify-center">
+<img alt="صورة المنتج تيس" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC_7SzRkyDtKcfAWD4jBaKgxnJvWlqmqQ9eDmZYEo_TcOxRd0JR8XIIZ0DxiYseg0z17RIMhGh9BY8hMd8bVxI0E5jqE1AwzkBO9MoqPhRT-ZU--bUZ2RqoBqfgQyKMBN8AZGnDAZ9F2ZSL4xosIcJJ8_ozuGfaQ7XebqcX639oj7yU-AyXyb285WO53fPuakexAsASnOxcSbua-DWcfo5S64QzVc8Dt-N1fNrE-NiWZoeEhFKs-NhxrA"/>
+</div>
+<!-- Product Details & Controls -->
+<div class="flex-1 min-w-0">
+<!-- Row: Name & Delete Icon -->
+<div class="flex items-start justify-between">
+<div>
+<h3 class="font-bold text-slate-800 text-base truncate leading-snug">تيس</h3>
+<p class="text-xs text-slate-400 mt-0.5 font-medium">كود الصنف: #4489</p>
+</div>
+<!-- Delete Single Item Button -->
+<button aria-label="حذف العنصر" class="text-red-500 hover:text-red-600 p-1.5 rounded-lg hover:bg-red-50 transition-colors" type="button">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Single Item Price -->
+<div class="mt-1">
+<span class="text-sm font-semibold text-slate-700">242.00</span>
+<span class="text-xs font-medium text-slate-500 mr-1">₪</span>
+</div>
+<!-- Row: Stepper & Subtotal -->
+<div class="flex items-center justify-between mt-3 pt-2 border-t border-slate-50">
+<!-- Quantity Stepper -->
+<div class="flex items-center bg-slate-50 rounded-lg p-1 border border-slate-200">
+<button aria-label="إنقاص الكمية" class="w-7 h-7 flex items-center justify-center rounded-md bg-white shadow-xs text-slate-700 font-bold hover:bg-slate-100 active:scale-90 transition-all" type="button">
+                  -
+                </button>
+<span class="w-8 text-center text-sm font-bold text-slate-800">1</span>
+<button aria-label="زيادة الكمية" class="w-7 h-7 flex items-center justify-center rounded-md bg-white shadow-xs text-slate-700 font-bold hover:bg-slate-100 active:scale-90 transition-all" type="button">
+                  +
+                </button>
+</div>
+<!-- Computed Total -->
+<div class="text-left font-bold text-slate-900 text-sm">
+<span>242.00</span>
+<span class="text-xs font-semibold mr-0.5">₪</span>
+</div>
+</div>
+</div>
+</div>
+<!-- END: CartItemCard -->
+<!-- Clear Cart Action Button -->
+<div class="flex justify-start px-1" data-purpose="clear-cart-container">
+<button class="inline-flex items-center gap-1.5 text-xs font-semibold text-red-500 hover:text-red-600 transition-colors py-1" type="button">
+<svg class="w-4 h-4 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span>إفراغ السلة</span>
+</button>
+</div>
+<!-- BEGIN: OrderSummaryCard -->
+<div class="bg-white rounded-2xl p-5 shadow-card border border-slate-100 space-y-4" data-purpose="order-summary-card">
+<!-- Summary Header / Count -->
+<div class="flex items-center justify-between text-sm text-slate-500 pb-3 border-b border-slate-100">
+<span>عدد المنتجات</span>
+<span class="font-bold text-slate-800 text-sm">1</span>
+</div>
+<!-- Subtotal Section -->
+<div class="flex items-center justify-between">
+<span class="text-sm font-semibold text-slate-600">المجموع الفرعي</span>
+<div class="text-xl font-extrabold text-brand-navy">
+<span>242.00</span>
+<span class="text-sm font-bold mr-1">₪</span>
+</div>
+</div>
+<!-- Checkout CTA Button -->
+<button class="w-full mt-2 py-3.5 px-4 bg-brand-navy hover:bg-brand-darkNavy text-white font-bold rounded-xl shadow-lg shadow-slate-300 hover:shadow-none active:scale-[0.99] transition-all flex items-center justify-center gap-2" type="button">
+<span>المتابعة للدفع</span>
+<svg class="w-4 h-4 transform rotate-180" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M9 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- END: OrderSummaryCard -->
+</main>
+</div>
+<!-- BEGIN: BottomNavigation -->
+<nav class="relative bg-white border-t border-slate-100 px-3 py-2 z-40 shadow-nav" data-purpose="bottom-bar">
+<div class="flex justify-around items-center relative">
+<!-- Tab: الرئيسية (Home) -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-800 transition-colors" href="#home">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-semibold mt-1">الرئيسية</span>
+</a>
+<!-- Tab: المولات (Malls) -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-800 transition-colors" href="#malls">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-semibold mt-1">المولات</span>
+</a>
+<!-- Tab Center: Floating Barcode Scanner Action -->
+<div class="relative -top-5 flex flex-col items-center">
+<button aria-label="مسح الباركود" class="w-13 h-13 p-3 bg-brand-navy text-white rounded-full shadow-floating ring-4 ring-white active:scale-95 transition-transform flex items-center justify-center" type="button">
+<!-- Barcode Scanner Frame Icon -->
+<svg class="w-6 h-6 stroke-current" fill="none" stroke-width="2" viewbox="0 0 24 24">
+<path d="M3 7V5a2 2 0 012-2h2m10 0h2a2 2 0 012 2v2m0 10v2a2 2 0 01-2 2h-2m-10 0H5a2 2 0 01-2-2v-2" stroke-linecap="round" stroke-linejoin="round"></path>
+<line stroke-linecap="round" x1="7" x2="17" y1="12" y2="12"></line>
+</svg>
+</button>
+</div>
+<!-- Tab: العروض (Offers) -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-800 transition-colors" href="#offers">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-semibold mt-1">العروض</span>
+</a>
+<!-- Tab: حسابي (Profile) -->
+<a class="flex flex-col items-center justify-center flex-1 py-1 text-slate-400 hover:text-slate-800 transition-colors" href="#profile">
+<svg class="w-5 h-5 stroke-current" fill="none" stroke-width="1.8" viewbox="0 0 24 24">
+<path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<span class="text-[10px] font-semibold mt-1">حسابي</span>
+</a>
+</div>
+</nav>
+<!-- END: BottomNavigation -->
+</div>
+<!-- END: MobileContainer -->
+</body></html>

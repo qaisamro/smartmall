@@ -1,0 +1,1 @@
+export { MallMap } from './MallMap.web';

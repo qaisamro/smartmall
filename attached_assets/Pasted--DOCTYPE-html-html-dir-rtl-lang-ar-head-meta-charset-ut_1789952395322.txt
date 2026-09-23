@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+
+<html dir="rtl" lang="ar"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>العروض والتخفيضات - SmartMall</title>
+<!-- Tailwind CSS CDN with forms and container plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Phosphor Icons for iOS Native Look -->
+<script src="https://unpkg.com/@phosphor-icons/web"></script>
+<!-- Google Fonts: Cairo & Tajawal -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&amp;family=Tajawal:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              navy: '#0f2942',
+              dark: '#091a2b',
+              red: '#e53935',
+              crimson: '#c62828',
+              gold: '#ffb300',
+              accent: '#2563eb',
+              lightBg: '#f8fafc'
+            }
+          },
+          fontFamily: {
+            cairo: ['Cairo', 'sans-serif'],
+            tajawal: ['Tajawal', 'sans-serif']
+          },
+          boxShadow: {
+            'card': '0 4px 14px -1px rgba(15, 41, 66, 0.07)',
+            'nav': '0 -4px 20px rgba(0, 0, 0, 0.06)'
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-scrollbars-and-reset">
+    body {
+      font-family: 'Cairo', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+    .shekel-symbol {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body class="bg-[#f5f7fa] text-slate-800 min-h-screen pb-28 antialiased selection:bg-brand-red selection:text-white">
+<!-- BEGIN: MobileDeviceFrame -->
+<div class="max-w-[430px] mx-auto min-h-screen bg-slate-50 relative shadow-2xl flex flex-col">
+<!-- BEGIN: iOSStatusBarArea -->
+<!-- Safe Area and Top Status styling simulation -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-100" data-purpose="app-top-bar">
+<!-- iOS Notch / Dynamic Island placeholder spacer -->
+<div class="h-10 w-full flex items-center justify-between px-7 pt-2 text-xs font-semibold text-slate-900">
+<span>9:41</span>
+<div class="w-24 h-4 bg-slate-900 rounded-full mx-auto -mt-1 hidden sm:block"></div>
+<div class="flex items-center gap-1.5">
+<i class="ph-bold ph-cellular-signal-full"></i>
+<i class="ph-bold ph-wifi-high"></i>
+<i class="ph-fill ph-battery-full text-base"></i>
+</div>
+</div>
+<!-- Main Navigation and Page Identity -->
+<div class="px-4 py-3 flex items-center justify-between gap-3">
+<!-- Title and Subtitle Block -->
+<div>
+<div class="flex items-center gap-2">
+<h1 class="text-xl font-extrabold text-brand-navy tracking-tight">العروض والتخفيضات</h1>
+<span class="inline-flex items-center justify-center px-2 py-0.5 text-[10px] font-bold text-white bg-gradient-to-r from-red-600 to-brand-red rounded-full shadow-sm animate-pulse">
+              مباشر
+            </span>
+</div>
+<p class="text-xs text-slate-500 font-tajawal mt-0.5">وفّر أكثر على أفضل المنتجات المختارة</p>
+</div>
+<!-- Action Icons (Filter & Cart with Badge) -->
+<div class="flex items-center gap-2">
+<!-- Filter Button -->
+<button aria-label="تصفية العروض" class="w-9 h-9 rounded-full bg-slate-100 text-slate-700 flex items-center justify-center hover:bg-slate-200 transition-colors" type="button">
+<i class="ph-bold ph-sliders text-base"></i>
+</button>
+<!-- Cart Button with dynamic badge -->
+<button aria-label="سلة التسوق" class="w-9 h-9 rounded-full bg-slate-100 text-brand-navy flex items-center justify-center relative hover:bg-slate-200 transition-colors" type="button">
+<i class="ph-bold ph-shopping-cart-simple text-lg"></i>
+<span class="absolute -top-1 -right-1 bg-brand-red text-white text-[10px] font-black w-4 h-4 rounded-full flex items-center justify-center border-2 border-white shadow-sm">
+              3
+            </span>
+</button>
+</div>
+</div>
+<!-- Category Filter Pills (Horizontal Scrollable) -->
+<div class="px-4 pb-3 overflow-x-auto no-scrollbar flex items-center gap-2">
+<button class="px-4 py-1.5 rounded-full text-xs font-bold bg-brand-navy text-white shadow-sm whitespace-nowrap">
+          جميع العروض
+        </button>
+<button class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-slate-300 shadow-sm whitespace-nowrap">
+          ⚡ عروض اليوم
+        </button>
+<button class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-slate-300 shadow-sm whitespace-nowrap">
+          عروض نهاية الأسبوع
+        </button>
+<button class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-slate-300 shadow-sm whitespace-nowrap">
+          عروض غذائية
+        </button>
+<button class="px-3.5 py-1.5 rounded-full text-xs font-semibold bg-white border border-slate-200 text-slate-700 hover:border-slate-300 shadow-sm whitespace-nowrap">
+          أجهزة وإلكترونيات
+        </button>
+</div>
+</header>
+<!-- END: iOSStatusBarArea -->
+<!-- BEGIN: MainContent -->
+<main class="flex-1 px-3 pt-3">
+<!-- BEGIN: HeroPromoBanner -->
+<!-- Special Mega Offers Carousel style card -->
+<section class="mb-4 relative overflow-hidden rounded-2xl bg-gradient-to-l from-brand-navy via-[#173e63] to-brand-crimson p-4 text-white shadow-md" data-purpose="hero-promo-banner">
+<div class="absolute -left-6 -bottom-6 w-28 h-28 bg-white/10 rounded-full blur-xl pointer-events-none"></div>
+<div class="flex items-center justify-between relative z-10">
+<div class="space-y-1">
+<span class="inline-block bg-brand-gold/90 text-brand-navy px-2 py-0.5 rounded text-[11px] font-black">
+              أسبوع التوفير الهائل 🔥
+            </span>
+<h2 class="text-base font-extrabold leading-snug">
+              خصومات تصل حتى <span class="text-brand-gold text-lg">70%</span>
+</h2>
+<p class="text-[11px] text-slate-200 font-tajawal">في سمارت مول وحسان مول وماركت المدينة</p>
+</div>
+<div class="shrink-0 flex flex-col items-center">
+<div class="w-12 h-12 bg-white/15 rounded-xl border border-white/20 flex items-center justify-center shadow-inner">
+<i class="ph-duotone ph-seal-percent text-3xl text-brand-gold"></i>
+</div>
+<span class="text-[10px] text-slate-300 mt-1 font-semibold">ينتهي قريباً</span>
+</div>
+</div>
+</section>
+<!-- END: HeroPromoBanner -->
+<!-- BEGIN: ProductDealsGrid -->
+<!-- Two-column iOS Grid adhering closely to reference https://lh3.googleusercontent.com/aida-public/AB6AXuAu4tcqmnmqv-W6VtBfOrXZSZ7LANcW-PHnSCKEOLW01MttDqGXLmUIm0lzzEYity0SHLCnCZ_l43-2s7J_NffX3KoxYdY6nWp4h7rLjpjl2e59EdskzukTvg-MdFsPaDwCb8t3PenHd5ytQFXM5LTM-nYVwAh0fJ-_Ko4dP35O2eIp1kKxiv4n5wf_Tj4lheGY6vM-1a0NSIj5Xlsj2zCDcNB1kP1323IOpwhACo4LjYQpM2jiDvwMD3YHESJd7OIxIEk -->
+<section aria-label="شبكة بطاقات المنتجات المخفضة">
+<div class="grid grid-cols-2 gap-2.5" data-purpose="deals-cards-grid">
+<!-- Product Card 1: Reference image item (Baklava Dough) -->
+<article class="bg-white rounded-2xl border border-slate-100 p-2 shadow-card flex flex-col justify-between relative overflow-hidden group">
+<!-- Promo Discount Tag Badge -->
+<div class="absolute top-2 right-2 z-10 bg-brand-red text-white text-[11px] font-black px-2 py-0.5 rounded-lg shadow-md flex items-center gap-1">
+<span>وفر 25%</span>
+</div>
+<!-- Product Image Container with Image Source -->
+<div class="relative w-full aspect-square bg-slate-50 rounded-xl overflow-hidden mb-2">
+<img alt="عجينة بقلاوة طازجة" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDb6PzIwZh9z69J33cMpjQk8yoNIJBWXFa-oVIOZUJ5jAqYK6VpWugODYp9kNO5yndaUjxgQ_beHRECeCleovfgzboivJrtiivvIrwCB-wbDNVquZzozBj6tv2QlovepGZgt1wccaaB5VyYaG7K3-fHYo1V41G4NiPOyZnxW4RVHW5pabo7Ymax1O1ShdXxYBRFTe_ItxcNZ783BAQOVkJTNVWa1qzckgmhtM8PwOBVwla3KvylF8cIxkEo2wxDTBdBAlk"/>
+<!-- Special circular badge mimicking the original reference style -->
+<div class="absolute bottom-1 right-1 bg-yellow-400 text-brand-crimson font-black text-[9px] leading-tight px-1.5 py-0.5 rounded shadow">
+                عرض خاص
+              </div>
+</div>
+<!-- Product Information -->
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-semibold text-slate-400">سمارت ماركت</span>
+<h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">عجينة بقلاوة طازجة ممتازة 500 غرام</h3>
+</div>
+<!-- Price & Quick Action -->
+<div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-100">
+<div>
+<div class="text-[10px] text-slate-400 line-through">12.00 <span class="shekel-symbol">₪</span></div>
+<div class="text-sm font-black text-brand-red">
+                    9.00 <span class="shekel-symbol text-xs">₪</span>
+</div>
+</div>
+<button aria-label="إضافة للسلة" class="w-7 h-7 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-lg flex items-center justify-center shadow transition-all active:scale-90" type="button">
+<i class="ph-bold ph-plus text-sm"></i>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 2: Hassan Mall Offer -->
+<article class="bg-white rounded-2xl border border-slate-100 p-2 shadow-card flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-2 right-2 z-10 bg-amber-500 text-white text-[10px] font-black px-2 py-0.5 rounded-lg shadow-sm">
+              عروض لا تتوقف
+            </div>
+<div class="relative w-full aspect-square bg-slate-50 rounded-xl overflow-hidden mb-2">
+<img alt="عروض لا تتوقف لدى حسان مول" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBlSbl20Vm5XdYAiZpRk5VBJoZnytEG6bwScjkk5yKJBeHXljvV3AcBxOTuYf61W8wfv74vd54I1BwpYU5bvnvcgx2yzfUXOewLgzca5n3Y_6Iz8RVXnIaj6AKeIXSczyZVIBOTDDUplgdL27kY-t4N_oJ4TJCntgnDZ6YZy59MAY2JH62j3B9IxWULzPXzuirmrSgSen_TdxkNyXd_mo3uxzuVs_AHzGG1hJzDvA6pYhIPGrSrILndN55C5eQcWMT2ST8"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-semibold text-slate-400">حسان مول</span>
+<h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">عروض لا تتوقف لدى حسان مول - تشكيلة خاصة</h3>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-100">
+<div>
+<div class="text-[10px] text-slate-400 line-through">14.00 <span class="shekel-symbol">₪</span></div>
+<div class="text-sm font-black text-brand-red">
+                    10.00 <span class="shekel-symbol text-xs">₪</span>
+</div>
+</div>
+<button aria-label="إضافة للسلة" class="w-7 h-7 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-lg flex items-center justify-center shadow transition-all active:scale-90" type="button">
+<i class="ph-bold ph-plus text-sm"></i>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 3: Hassan Mall Exclusive Deal -->
+<article class="bg-white rounded-2xl border border-slate-100 p-2 shadow-card flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-2 right-2 z-10 bg-brand-navy text-white text-[10px] font-bold px-1.5 py-0.5 rounded-md">
+              حصري
+            </div>
+<div class="relative w-full aspect-square bg-slate-50 rounded-xl overflow-hidden mb-2">
+<img alt="عروض خاصة لحسان مول زيت ومواد تموينية" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBHUnBkC43jYfj_cFmFLuPdVFY2bx8gqr3RQOtTBPpb39CVy4KF766LCknWeOznqK1XHUwe6HY-55V34tCN5wEsKdzoHOqCIxcPMFvKS3IKAVX0mto4R_0d7eciY0rMV9DAdLhFsEtyGZjuvYh6K4tOLbUHVD9bxjBvL7rbeE48MrWJ5mVDCbipazNONJwu36oqtu4_AhN-g5-TcQfElQv66FJX6H8UVN9dwLN3DGcu0-HXFLV48AyginDNFZMmPYuQzdg"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-semibold text-slate-400">قسم التموين</span>
+<h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">عروض خاصة لحسان مول - زيت زيتون ومعلبات</h3>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-100">
+<div>
+<div class="text-[10px] text-slate-400 line-through">13.50 <span class="shekel-symbol">₪</span></div>
+<div class="text-sm font-black text-brand-red">
+                    10.00 <span class="shekel-symbol text-xs">₪</span>
+</div>
+</div>
+<button aria-label="إضافة للسلة" class="w-7 h-7 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-lg flex items-center justify-center shadow transition-all active:scale-90" type="button">
+<i class="ph-bold ph-plus text-sm"></i>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 4: Family Butter Cookies (From Reference 17.50) -->
+<article class="bg-white rounded-2xl border border-slate-100 p-2 shadow-card flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-2 right-2 z-10 bg-brand-red text-white text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-sm">
+              وفر 7.50 ₪
+            </div>
+<div class="relative w-full aspect-square bg-slate-50 rounded-xl overflow-hidden mb-2">
+<img alt="بسكويت زبدة ملكي عبوة عائلية" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-GWL_yVNEgarTjn6Xgd-g1Q5sDBInaLolmiMcl1FKy4nhI7PjBMc5xJV0yl8Gu46_gFMCZuLVmBTjE0uXXICUWJIU3hV_JfOc46Qy6GgcgP-Kk_eGZxNdAUiFNleffhCblpA_mHWCtCDMwGEgu2ABL357BKPBbJBT1EWDHkvcCM48CKvLW8VWS0e0eNFK_Rz2VVvg5-L0tu-YjK_IRvSNYeoEeSIMCuRxx5-MH2WJBRgTtZKJXzA-yAva5HzbQxfhuYA"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-semibold text-slate-400">حلويات ومخبوزات</span>
+<h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">بسكويت زبدة ملكي فاخر - حجم عائلي كبير</h3>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-100">
+<div>
+<div class="text-[10px] text-slate-400 line-through">25.00 <span class="shekel-symbol">₪</span></div>
+<div class="text-sm font-black text-brand-red">
+                    17.50 <span class="shekel-symbol text-xs">₪</span>
+</div>
+</div>
+<button aria-label="إضافة للسلة" class="w-7 h-7 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-lg flex items-center justify-center shadow transition-all active:scale-90" type="button">
+<i class="ph-bold ph-plus text-sm"></i>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 5: Canned Mushrooms -->
+<article class="bg-white rounded-2xl border border-slate-100 p-2 shadow-card flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-2 right-2 z-10 bg-emerald-600 text-white text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-sm">
+              33% خصم
+            </div>
+<div class="relative w-full aspect-square bg-slate-50 rounded-xl overflow-hidden mb-2">
+<img alt="فطر مقطع معلب" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAV3cNpI9egjlPI8Nb1tOebMCtNB-cOYxU-wyhQ225YI8SsYmsPx907pQBO7kOgxbhP0zSVnlhTXYIqMPtQ0n87zqy230Y7_y1dGezPM236E0oYurHPMuSQgGD3mjW8CvsblTQwJK4I3R0KE-kmIMHOBNVbkOELEcqu9vr8WgY1kCYIPu8c45Aw_RyqOZ5Hm4qSAMyDZG1eecTs6biEwsuwGLFoWT3u_dtThrdV1C7FJ6VwQNPu49XhiuPyM7ug9muGZFk"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-semibold text-slate-400">معلبات ومؤن</span>
+<h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">فطر ريبال مقطع ومعلب جودة ممتازة 400 غرام</h3>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-100">
+<div>
+<div class="text-[10px] text-slate-400 line-through">5.00 <span class="shekel-symbol">₪</span></div>
+<div class="text-sm font-black text-brand-red">
+                    3.33 <span class="shekel-symbol text-xs">₪</span>
+</div>
+</div>
+<button aria-label="إضافة للسلة" class="w-7 h-7 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-lg flex items-center justify-center shadow transition-all active:scale-90" type="button">
+<i class="ph-bold ph-plus text-sm"></i>
+</button>
+</div>
+</div>
+</article>
+<!-- Product Card 6: Whole Milk -->
+<article class="bg-white rounded-2xl border border-slate-100 p-2 shadow-card flex flex-col justify-between relative overflow-hidden group">
+<div class="absolute top-2 right-2 z-10 bg-brand-red text-white text-[10px] font-black px-1.5 py-0.5 rounded-md shadow-sm">
+              عرض الأسبوع
+            </div>
+<div class="relative w-full aspect-square bg-slate-50 rounded-xl overflow-hidden mb-2">
+<img alt="حليب طازج 1 لتر" class="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-300" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD7-8Nv5gvtUbXEQOYKihWcF1eWKSDl2-5EpLbJOgtz2wakUWyK-Ts8d9pkko6UUFBqs03_X6l22E1X1sF2kF4gZn55mMwzspDN62uiy_eXCm6fhbR8StzqIJZPnKx0AJj1Uy7zWJdFHKm1VPOcJ9dBEDl9rWsLFPihsmw9bHSE1eBjyhA6oOMtJhAutmBEzuV4etryBs4DLLuywY77Q21RJAqlYPEGjgN8ZlaLUoZPf2IQb6D55ZuFd9v0qa492l-QSkQ"/>
+</div>
+<div class="flex-1 flex flex-col justify-between">
+<div>
+<span class="text-[10px] font-semibold text-slate-400">ألبان وأجبان</span>
+<h3 class="text-xs font-bold text-slate-800 line-clamp-2 mt-0.5">حليب كامل الدسم مبستر 1 لتر عبوة توفيرية</h3>
+</div>
+<div class="mt-2.5 flex items-center justify-between pt-2 border-t border-slate-100">
+<div>
+<div class="text-[10px] text-slate-400 line-through">8.00 <span class="shekel-symbol">₪</span></div>
+<div class="text-sm font-black text-brand-red">
+                    6.50 <span class="shekel-symbol text-xs">₪</span>
+</div>
+</div>
+<button aria-label="إضافة للسلة" class="w-7 h-7 bg-brand-navy hover:bg-brand-navy/90 text-white rounded-lg flex items-center justify-center shadow transition-all active:scale-90" type="button">
+<i class="ph-bold ph-plus text-sm"></i>
+</button>
+</div>
+</div>
+</article>
+</div>
+</section>
+<!-- END: ProductDealsGrid -->
+</main>
+<!-- END: MainContent -->
+<!-- BEGIN: BottomNavigationBar -->
+<!-- Native iOS 5-Tab Navigation bar with Floating Center Scanner / Highlight on Deals Tab -->
+<nav class="fixed bottom-0 left-0 right-0 max-w-[430px] mx-auto bg-white/95 backdrop-blur-lg border-t border-slate-200/80 px-2 py-1.5 shadow-nav z-50" data-purpose="mobile-bottom-navigation">
+<div class="flex items-center justify-around relative">
+<!-- Tab 1: الرئيسية (Home) -->
+<a class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-brand-navy transition-colors" href="#home">
+<i class="ph ph-house text-xl"></i>
+<span class="text-[10px] font-bold mt-0.5 font-tajawal">الرئيسية</span>
+</a>
+<!-- Tab 2: المولات (Malls) -->
+<a class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-brand-navy transition-colors" href="#malls">
+<i class="ph ph-storefront text-xl"></i>
+<span class="text-[10px] font-bold mt-0.5 font-tajawal">المولات</span>
+</a>
+<!-- Tab 3: Active Deals (العروض) - Highlighted as requested -->
+<a class="flex flex-col items-center justify-center py-1 px-3 text-brand-red relative group" href="#offers">
+<div class="w-7 h-7 rounded-full bg-red-50 flex items-center justify-center">
+<i class="ph-fill ph-tag text-lg"></i>
+</div>
+<span class="text-[11px] font-extrabold mt-0.5 font-cairo">العروض</span>
+<span class="w-1.5 h-1.5 bg-brand-red rounded-full absolute -top-0.5"></span>
+</a>
+<!-- Tab 4: الطلبات (Orders) -->
+<a class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-brand-navy transition-colors" href="#orders">
+<i class="ph ph-receipt text-xl"></i>
+<span class="text-[10px] font-bold mt-0.5 font-tajawal">الطلبات</span>
+</a>
+<!-- Tab 5: حسابي (Profile) -->
+<a class="flex flex-col items-center justify-center py-1 px-2 text-slate-400 hover:text-brand-navy transition-colors" href="#profile">
+<i class="ph ph-user text-xl"></i>
+<span class="text-[10px] font-bold mt-0.5 font-tajawal">حسابي</span>
+</a>
+</div>
+<!-- iOS Home Indicator bar -->
+<div class="w-32 h-1 bg-slate-300 rounded-full mx-auto mt-2 mb-0.5"></div>
+</nav>
+<!-- END: BottomNavigationBar -->
+</div>
+<!-- END: MobileDeviceFrame -->
+</body></html>
