@@ -46,7 +46,7 @@ pnpm install
 أنشئ ملف إعدادات محلياً لتطبيق الهاتف:
 
 ```bash
-cp artifacts/smartmall-mobile/.env.example artifacts/smartmall-mobile/.env
+cp Mobile-App/.env.example Mobile-App/.env
 ```
 
 عدّل `EXPO_PUBLIC_API_BASE_URL` في الملف إذا كنت تستخدم خادماً محلياً أو بيئة اختبار. لا تضع كلمات مرور أو مفاتيح خاصة في متغيرات `EXPO_PUBLIC_*` لأنها تصل إلى تطبيق العميل.
@@ -62,7 +62,7 @@ pnpm --filter @workspace/smartmall-mobile run dev
 يمكن أيضاً تشغيل Expo من مجلد تطبيق الهاتف:
 
 ```bash
-cd artifacts/smartmall-mobile
+cd Mobile-App
 npx expo start
 ```
 
@@ -78,7 +78,7 @@ npx expo start
 إذا كنت تشغل حزمة الهاتف في بيئة npm أو Yarn بدلاً من pnpm:
 
 ```bash
-cd artifacts/smartmall-mobile
+cd Mobile-App
 npm install
 # أو:
 yarn install
@@ -108,10 +108,10 @@ pnpm run typecheck
 
 ## هيكل المستودع
 
-- `artifacts/smartmall-mobile/`: تطبيق Expo وReact Native المحمول.
-- `artifacts/smartmall/`: واجهة الويب.
+- `Mobile-App/`: تطبيق Expo وReact Native المحمول.
+- `frontend/`: واجهة الويب.
 - `artifacts/api-server/`: خادم API المساند.
-- `services/`: خدمات وتكاملات المشروع الأخرى.
+- `backend/`: خدمة Laravel الأساسية وواجهات API.
 - `lib/`: مكتبات مشتركة.
 
 ## ملفات البيئة والأمان

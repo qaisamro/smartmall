@@ -17,7 +17,7 @@ run = "pnpm --filter @workspace/smartmall run dev"
 [services.production]
 build = [ "pnpm", "--filter", "@workspace/smartmall", "run", "build" ]
 serve = "static"
-publicDir = "artifacts/smartmall/dist"
+publicDir = "frontend/dist"
 
 [[services.production.rewrites]]
 from = "/*"

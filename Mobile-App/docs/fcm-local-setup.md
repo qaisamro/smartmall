@@ -13,7 +13,7 @@ flow, `PushNotificationService`, or the Hostinger deployment.
    The Android build hook writes the ignored file only when the build needs it.
 5. For local-only testing, the file may instead be placed at:
 
-   `artifacts/smartmall-mobile/google-services.json`
+   `Mobile-App/google-services.json`
 
    The file is ignored by git. Do not paste its contents into chat or commit it.
 
@@ -29,7 +29,7 @@ flow, `PushNotificationService`, or the Hostinger deployment.
 2. Download its JSON key.
 3. Place it locally at:
 
-   `services/smartmall-api/storage/app/firebase/service-account.json`
+   `backend/storage/app/firebase/service-account.json`
 
    This path is ignored by git and is not copied to Hostinger.
 4. Set these values in the local Laravel `.env` only:
@@ -41,7 +41,7 @@ flow, `PushNotificationService`, or the Hostinger deployment.
 
 ## 3. Install and migrate locally
 
-From `services/smartmall-api`:
+From `backend`:
 
 ```bash
 composer install
